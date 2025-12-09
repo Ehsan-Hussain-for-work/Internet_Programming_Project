@@ -6,10 +6,11 @@
 	<title>EAJ Shopping</title>
 
 	<script type="text/javascript" src="../JS/home.js"></script>
-	<link rel="stylesheet" type="text/css" href="../CSS/home.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/home.css"/>
 		
-	<link rel="stylesheet" type="text/css" href="../CSS/Global_Navigations/header.css">
-	<link rel="stylesheet" type="text/css" href="../CSS/Global_Navigations/footer.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="../CSS/Global_Navigations/header.css"/>
+	<link rel="stylesheet" type="text/css" href="../CSS/Global_Navigations/footer.css"/>
 </head>
 <body>
 	<form>
@@ -24,7 +25,10 @@
 
 		        <a id="account-link" href="login.html">Sign In</a>
 
-		        <a id="cart-link" href="checkout.html">Cart (0)</a>
+		        <div class="cart">
+		        	<a href="checkout.html"><i class="fas fa-shopping-cart cart-icon"></i></a>
+		        	<a id="cart-count" href="checkout.html">0</a>
+		        </div>
 		    </div>
 		    <div class="subsection">
 		        <nav>
@@ -63,7 +67,44 @@
 	            </nav>
 	        </div>
     	</header>
-		<footer></footer>
+    	<a/>TEMPLATE
+		<footer class="footer">
+
+    <div class="footer-container">
+        <div class="footer-section footer-left">
+            <h3>Contact Us</h3>
+            <a href="#">Customer Support</a>
+            <a href="#">Email Us</a>
+            <a href="#">Shipping Info</a>
+            <a href="#">Returns & Refunds</a>
+        </div>
+        <div class="footer-middle">
+            <div class="footer-section catalog">
+                <h3>Our Catalog</h3>
+                <a href="#">New Arrivals</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">Clearance</a>
+            </div>
+            <div class="footer-section newsletter">
+                <h3>Sign Up for Our Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-section footer-right">
+            <h3>Our Socials</h3>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">TikTok</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 Your Company — All rights reserved.
+    </div>
+</footer>
 	</form>
 </body>
 </html>

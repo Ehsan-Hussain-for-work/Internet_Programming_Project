@@ -1,6 +1,5 @@
 header > .main{
     background-color: #FF7417;
-    color: white;
     display: flex;
     align-items: center;
     padding: 10px 20px;
@@ -8,10 +7,11 @@ header > .main{
 }
 
 header > .main > #logo {
-	text-decoration: none;
+    text-decoration: none;
     color: white;
     font-size: 24px;
     font-weight: bold;
+    font-family: Arial, sans-serif;
 }
 
 header > .main > .search {
@@ -45,49 +45,49 @@ header > .main > #account-link {
     font-size: 16px;
     white-space: nowrap;
     font-weight: bold;
+    font-family: Arial, sans-serif;
 }
 
-header > .main > .cart-icon-container {
-	text-decoration: none;
+header > .main > #cart-logo {
+    text-decoration: none;
     color: white;
     font-size: 18px;
     white-space: nowrap;
     font-weight: bold;
-}
-
-
-header > .main > .cart-icon-container {
     possition: relative;
-    color: white;
     display: inline-block;
-    font-weight: bold;
 }
 
-header > .main > .cart {
-    font-size: 18px;
+header > .main > #cart-count {
+    text-decoration: none;
     color: white;
+    font-size: 18px;
+    white-space: nowrap;
     font-weight: bold;
+    possition: relative;
+    display: inline-block;
 }
 
 header > .subsection {
-	background-color: #febd69;
+    background-color: #febd69;
 }
 
-header > .subsection > nav ul {
-	margin: 0px;
-	padding: 5px 0px 5px 30px;
+header > .subsection > nav > ul {
+    margin: 0px;
+    padding: 5px 0px 5px 30px;
 }
 
 header > .subsection > nav li {
-	display: inline;
-	margin-right: 40px;
+    display: inline;
+    margin-right: 40px;
 }
 
-header > .subsection > nav li a {
-	text-decoration: none;
+header > .subsection > nav li > a {
+    text-decoration: none;
     color: white;
+    font-family: Arial, sans-serif;
 }
 
-header > .subsection > nav li a:hover, nav li a.current {
-	color: #FF7417;
+header > .subsection > nav li > a:hover, nav li > a.current {
+    color: #FF7417;
 }

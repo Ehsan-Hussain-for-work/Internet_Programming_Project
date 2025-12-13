@@ -38,7 +38,42 @@
 			</div>
     	</header>
 
-    	<a/>TEMPLATE BODY
+		<main class="plp-container">
+
+			<h1>Product Listings</h1>
+
+			<!-- Controls -->
+			<section class="plp-controls">
+
+				<div class="sort-control">
+					<label for="sort">Sort by price:</label>
+					<select id="sort">
+						<option value="">Select</option>
+						<option value="low-high">Low to High</option>
+						<option value="high-low">High to Low</option>
+					</select>
+				</div>
+
+				<div class="price-filter">
+					<label>
+						Max Price: $
+						<span id="priceValue">1000</span>
+					</label>
+					<input type="range"
+						   id="priceRange"
+						   min="0"
+						   max="1000"
+						   value="1000" />
+				</div>
+
+			</section>
+
+			<!-- Product Grid -->
+			<section id="product-list" class="product-grid">
+				<!-- Products injected by JavaScript -->
+			</section>
+
+		</main>
 
 		<footer class="footer">
 		    <div class="footer-container">

@@ -1,17 +1,3 @@
-
-function getCart() {
-    const storedCart = localStorage.getItem("cart");
-
-    if (storedCart) {
-        return JSON.parse(storedCart);
-    } else {
-        console.error("Could not parse cart data from localStorage:", e);
-        localStorage.removeItem("cart"); 
-        return []; 
-    }
-}
-
-
 function calculateTotals(cart) {
     const subtotal = cart.reduce((total, currentItem) => total + currentItem.price * currentItem.quantity, 0);
     const taxes = subtotal * 0.15;
@@ -74,6 +60,17 @@ function renderCart() {
         });
     }
     calculateTotals(cart);
+}
+
+function checkCart() {
+    const cart = getCart();
+    
+    if (cart.length === 0) {
+        alert("Your cart is empty. Please add items before placing an order.");
+        return false;
+    } else {
+        return true;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", renderCart);

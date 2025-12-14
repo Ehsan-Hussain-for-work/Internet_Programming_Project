@@ -1,0 +1,33 @@
+.receipt-section {
+    border: 3px solid orange;
+    text-align: center;
+    padding: 10px 0;
+    margin: 40px auto;    
+    width: 400px;
+}
+
+#receipt-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 15px 0;
+    padding-right: 5px;
+}
+
+.order-summary {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    gap: 20px;
+}
+
+.order-summary img {
+    width: 100px;
+    height: auto; 
+    object-fit: cover;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+}

@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="../Global_Navigations/global_navigations.js"></script>
 	<link rel="stylesheet" type="text/css" href="../Global_Navigations/header.css"/>
 	<link rel="stylesheet" type="text/css" href="../Global_Navigations/footer.css"/>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<form>
@@ -38,28 +39,62 @@
 			</div>
     	</header>
 
-		<div class="delivery-section">
-			<h1>Checkout</h1>
+		<h1 id="checkoutTitle">Checkout</h1>
+		<main class="checkout-container">
+			<div class="address-section">
+				<h2>Address Information</h2>
+				<form>
+					<label for="firstName">First Name*:</label>
+					<input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>				
+					
+					<label for="lastName">Last Name*:</label>
+					<input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>					
+					
+					<label for="phone">Phone Number*:</label>
+					<input type="text" id="phone" name="phone" placeholder="Ex: 514-123-4567" required>			
+					
+					<label for="email">Email*:</label>
+					<input type="text" id="email" name="email" placeholder="Enter Email" required>				
+					
+					<label for="address">Address*:</label>
+					<input type="text" id="address" name="address" placeholder="Enter Address" required>				
+					
+					<label for="apartment">Apartment / Suite (Optional)</label>
+					<input type="text" id="apartment">
+				</form>
+				<div class="delivery-option">
+					<h2>Delivery Options</h2>
+					<label>
+						Standard Delivery (Free, 5-7 days)
+						<input type="radio" name="delivery" value="standard"  onchange="handleDeliveryChange()" checked>
+					</label>
+		
+					<label>
+						Express Delivery (+$10, 1-2 days)
+						<input type="radio" name="delivery" value="express"  onchange="handleDeliveryChange()">
+					</label>			
+				</div>
+			</div>
+	
 			
-			<section class="shipping-address-form">
-				<h2>1. Shipping Information</h2>
-				<form id="shipping-form">
-					<div class="form-group">
-						<label for="full-name">Full Name</label>
-						<input type="text" id="full-name" required>
-					</div>
-					</form>
-			</section>
+			<div class="summary-column">
+				<div class="cart-summary-right">
+					<h1>Cart Summary</h1>
+					<div id="cart-list"></div>
+				</div>
 
-			<section class="delivery-method">
-				<h2>2. Delivery Method</h2>
-				</section>
-		</div>
+				<div class="summary-cost">
+					<p>Subtotal: $<span id="subtotal">0.00</span></p>
+					<p>With Taxes (15%): $<span id="tax">0.00</span></p>
+					<p>Delivery Fees: $<span id="deliveryFees">0.00</span></p>
+					<p><strong>Total: $<span id="total">0.00</span></strong></p>
+				</div>
 
-		<div class="payment-info">
-
-		</div>
-
+				<button id="order" type="button" onclick="confirmOrder()">Place Order</button>
+			</div>
+		</main>
+		
+		
 		<footer class="footer">
 		    <div class="footer-container">
 		        <div class="footer-section footer-left">

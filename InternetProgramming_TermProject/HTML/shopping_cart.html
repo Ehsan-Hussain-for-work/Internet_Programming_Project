@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="../Global_Navigations/global_navigations.js"></script>
 	<link rel="stylesheet" type="text/css" href="../Global_Navigations/header.css"/>
 	<link rel="stylesheet" type="text/css" href="../Global_Navigations/footer.css"/>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<form>
@@ -27,8 +28,8 @@
 		        <a id="account-link" href="login.html">Sign In</a>
 
 		        <div class="cart">
-		        	<a href="checkout.html"><i class="fas fa-shopping-cart cart-icon" id="cart-logo"></i></a>
-		        	<a id="cart-count" href="checkout.html">0</a>
+		        	<a href="shopping_cart.html"><i class="fas fa-shopping-cart cart-icon" id="cart-logo"></i></a>
+		        	<a id="cart-count" href="shopping_cart.html">0</a>
 		        </div>
 		    </div>
 		    <div class="subsection">
@@ -38,7 +39,22 @@
 			</div>
     	</header>
 
-    	<a/>TEMPLATE BODY
+		<div class="inside-cart">
+			<h1>Your Shopping Cart:</h1>
+
+			<div id="cart-list"></div>
+		</div>
+
+		<div class="summary-cost">
+			<p>Subtotal: $<span id="subtotal">0.00</span></p>
+			<p>With Taxes (15%): $<span id="tax">0.00</span></p>
+			<p><strong>Total: $<span id="total">0.00</span></p>
+			
+			<div class="buttons-section">
+				<a id="home" href="home.html">Continue Shopping</a>
+				<a id="checkout" href="checkout.html">Proceed to checkout</a>
+			</div>
+		</div>
 
 		<footer class="footer">
 		    <div class="footer-container">

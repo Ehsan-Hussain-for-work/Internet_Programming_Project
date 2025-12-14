@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadCategories();
+    updateCartCount();
 });
 
 function loadCategories() {
@@ -63,5 +64,56 @@ function buildFooterCatalog(categories) {
         link.textContent = name;
 
         container.appendChild(link);
+    }
+}
+
+/* ===== CART SECTION ===== */
+function getCart() {
+    const storedCart = localStorage.getItem("cart");
+
+    if (storedCart) {
+        try {
+            return JSON.parse(storedCart);
+        } catch (e) {
+            console.error("Cart parse error:", e);
+            return [];
+        }
+    }
+    return [];
+}
+
+function addToCart(id, name, price, stock, image, description) {
+    const cart = getCart(); 
+    const existingItem = cart.find(item => item.id === id); 
+
+    if (existingItem) {
+        if (existingItem.quantity < stock) {
+            existingItem.quantity += 1;
+        } else {
+            alert(`Cannot add more of ${name}. Stock limit (${stock}) reached.`);
+            return;
+        }
+    } else {
+        const newItem = {id,name,description,price,stock,image,quantity: 1};
+        cart.push(newItem);
+    }
+    
+    saveCart(cart);
+    updateCartCount();
+}
+
+function saveCart(cart) {
+    const cartString = JSON.stringify(cart);
+    localStorage.setItem("cart", cartString);
+}
+
+function updateCartCount() {
+    const cart = getCart();
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    const cartCountElement = document.getElementById("cart-count");
+
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
     }
 }

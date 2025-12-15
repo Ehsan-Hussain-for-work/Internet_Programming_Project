@@ -22,6 +22,7 @@ const searchInput = document.getElementById("search-bar");
 const suggestionsBox = document.createElement("div");
 suggestionsBox.className = "search-suggestions";
 searchInput.parentElement.appendChild(suggestionsBox);
+const searchButton = document.getElementById("search-button");
 
 /* Live suggestions */
 searchInput.addEventListener("input", () => {

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     loadCategories();
     updateCartCount();
+    updateAuthUI();
 });
 
 //Entry Point
@@ -102,6 +103,19 @@ function getCookie(name) {
             const parts = v.split("=");
             return parts[0] === name ? decodeURIComponent(parts[1]) : r;
         }, "");
+}
+
+//Updates the Account UI
+function updateAuthUI() {
+    const accountLink = document.getElementById("account-link");
+
+    if (getLoggedInUser()) {
+        accountLink.textContent = "My Account";
+        accountLink.href = "profile.html";
+    } else {
+        accountLink.textContent = "Sign In";
+        accountLink.href = "login.html";
+    }
 }
 
 //Cart Based on Account

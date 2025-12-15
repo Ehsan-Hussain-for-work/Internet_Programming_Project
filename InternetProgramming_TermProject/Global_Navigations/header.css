@@ -61,7 +61,7 @@ header > .main > #cart-logo {
     font-size: 18px;
     white-space: nowrap;
     font-weight: bold;
-    possition: relative;
+    position: relative;
     display: inline-block;
 }
 
@@ -71,7 +71,7 @@ header > .main > #cart-count {
     font-size: 18px;
     white-space: nowrap;
     font-weight: bold;
-    possition: relative;
+    position: relative;
     display: inline-block;
 }
 

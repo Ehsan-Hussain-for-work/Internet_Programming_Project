@@ -31,3 +31,10 @@ searchInput.addEventListener("input", () => {
         suggestionsBox.appendChild(item);
     });
 });
+
+searchInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        searchButton.click();
+    }
+});

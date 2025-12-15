@@ -54,7 +54,13 @@ function renderProducts(products) {
         }
 
         container.innerHTML += `
-      <div class="product-card" onclick="goToDetail('${p.id}')">
+      <div class="product-card"
+           tabindex="0"
+           role="button"
+           aria-label="View product ${p.title}"
+           onclick="goToDetail('${p.id}')"
+           onkeydown="if(event.key==='Enter'){goToDetail('${p.id}')}"
+      >
         <img src="${p.image}" alt="${p.title}">
         <h3>${title}</h3>
         <p>$${p.price}</p>
@@ -62,6 +68,7 @@ function renderProducts(products) {
     `;
     });
 }
+
 
 /* === SORT === */
 function sortProducts() {

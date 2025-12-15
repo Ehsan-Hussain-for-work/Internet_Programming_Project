@@ -56,9 +56,24 @@ function displayProduct(p) {
 }
 
 function addToCartPDP() {
-    const qty = document.getElementById("quantity").value;
-    
-    
+    const qty = parseInt(document.getElementById("quantity").value) || 1;
+    const id = new URLSearchParams(window.location.search).get("id");
+    const name = document.getElementById("product-title").textContent;
+    const price = parseFloat(
+        document.getElementById("product-price").textContent.replace("$", "")
+    );
+
+    const description = document.getElementById("product-description").textContent;
+
+    const image = document.getElementById("product-image").src;
+
+    const stockText = document.getElementById("product-stock").textContent;
+    const stock = stockText === "In Stock" ? 999 : 0; // fallback
+
+    for (let i = 0; i < qty; i++) {
+        addToCart(id, name, price, stock, image, description);
+    }
+    event.preventDefault(); 
 }
 
 function showRelated(products, currentCategory) {    

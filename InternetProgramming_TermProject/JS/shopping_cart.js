@@ -9,26 +9,26 @@ function calculateTotals(cart) {
 }
 
 function removeItem(id) {
-  const cart = getCart().filter(i => i.id !== id);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-  updateCartCount();
+    const cart = getCart().filter(item => String(item.id) !== String(id));
+    saveCart(cart);
+    renderCart();
+    updateCartCount();
 }
 
 function updateQty(id, qty) {
     const cart = getCart();
-    const item = cart.find(i => i.id === id);
+    const item = cart.find(item => String(item.id) === String(id));
     if (!item) return;
 
-    let newQty = Math.max(1, parseInt(qty));
+    let newQty = Math.max(1, parseInt(qty) || 1);
 
     if (newQty > item.stock) {
-        newQty = item.stock; 
-        alert(`Sorry, you can only order a maximum of ${item.stock} unit(s) of ${item.name}.`); 
+        newQty = item.stock;
+        alert(`Sorry, you can only order a maximum of ${item.stock} unit(s) of ${item.name}.`);
     }
 
     item.quantity = newQty;
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveCart(cart);
     renderCart();
     updateCartCount();
 }
@@ -51,9 +51,11 @@ function renderCart() {
                 <h3>${item.name}</h3>
                 <p>${item.description}</p>
                 <p>$${item.price.toFixed(2)}</p>
-                <input type="number" min="1" value="${item.quantity}"
-                onchange="updateQty(${item.id}, this.value)">
-                <button onclick="removeItem(${item.id})">Remove</button>
+                <input type="number"
+                    min="1"
+                    value="${item.quantity}"
+                    onchange="updateQty('${item.id}', this.value)">
+                <button type="button" onclick="removeItem('${item.id}')">Remove</button>
             </div>
         </div>
         `;

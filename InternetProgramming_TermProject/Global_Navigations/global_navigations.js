@@ -162,6 +162,7 @@ function addToCart(id, name, price, stock, image, description) {
 
     saveCart(cart);
     updateCartCount();
+    event.preventDefault();
 }
 
 //Counting Items in Cart

@@ -1,9 +1,21 @@
 let searchProducts = [];
 
-/* Load mock product data */
-fetch("../data/Automotive.json")
-    .then(res => res.json())
-    .then(data => searchProducts = data);
+const PRODUCT_FILES = [
+    "../data/Automotive.json",
+    "../data/Electronics.json",
+    "../data/Clothing.json",
+    "../data/Home & Kitchen.json",
+    "../data/Beauty & Personal Care.json",
+    "../data/Office Supplies.json",
+    "../data/Pet Supplies.json",
+    "../data/Sports & Outdoors.json",
+    "../data/Toys & Games.json"
+];
+
+Promise.all(PRODUCT_FILES.map(file => fetch(file).then(r => r.json())))
+    .then(allData => {
+        searchProducts = allData.flat();
+    });
 
 /* Elements */
 const searchInput = document.getElementById("search-bar");
@@ -16,20 +28,33 @@ searchInput.addEventListener("input", () => {
     const query = searchInput.value.trim().toLowerCase();
     suggestionsBox.innerHTML = "";
 
-    if (query.length === 0) return;
+    if (!query) return;
 
     const matches = searchProducts
         .filter(p => p.name.toLowerCase().includes(query))
-        .slice(0, 5);
+        .slice(0, 99);
 
     matches.forEach(p => {
         const item = document.createElement("div");
-        item.textContent = p.name;
+        item.innerHTML = p.name.replace(
+            new RegExp(query, "gi"),
+            match => `<strong>${match}</strong>`
+        );
+
         item.onclick = () => {
-            window.location.href = `product_listing.html?search=${encodeURIComponent(query)}`;
+            window.location.href =
+                `product_detail.html?id=${p.id}&category=${encodeURIComponent(p.category)}`;
         };
+
         suggestionsBox.appendChild(item);
     });
+});
+
+searchButton.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    window.location.href = `product_listing.html?search=${encodeURIComponent(query)}`;
 });
 
 searchInput.addEventListener("keydown", e => {

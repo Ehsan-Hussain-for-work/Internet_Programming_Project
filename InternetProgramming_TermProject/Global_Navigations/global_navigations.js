@@ -143,6 +143,7 @@ function addToCart(id, name, price, stock, image, description) {
 
     if (!user) {
         alert("Please log in to add items to the cart.");
+        event.preventDefault();
         return;
     }
 
@@ -154,6 +155,7 @@ function addToCart(id, name, price, stock, image, description) {
             existingItem.quantity += 1;
         } else {
             alert(`Cannot add more of ${name}. Stock limit (${stock}) reached.`);
+            event.preventDefault();
             return;
         }
     } else {

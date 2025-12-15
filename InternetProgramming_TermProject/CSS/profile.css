@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Profile Layout */
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Cards */
+.profile-card,
+.info-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #FF7417;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+}
+
+.profile-header h2 {
+    margin: 0;
+}
+
+.profile-header p {
+    margin: 5px 0 0;
+    color: #555;
+}
+
+/* Buttons */
+.profile-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.profile-actions button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #FF7417;
+    color: white;
+}
+
+.profile-actions button.secondary {
+    background-color: #febd69;
+    color: #333;
+}
+
+/* Info Section */
+.info-card h3 {
+    margin-top: 0;
+    color: #FF7417;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}

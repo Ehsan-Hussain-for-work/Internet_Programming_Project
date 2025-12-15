@@ -5,14 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>EAJ Account</title>
 
-	<script type="text/javascript" src="../JS/user_account.js"></script>
-	<link rel="stylesheet" type="text/css" href="../CSS/user_account.css" />
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script type="text/javascript" src="../JS/profile.js"></script>
+	<link rel="stylesheet" type="text/css" href="../CSS/profile.css"/>
+		
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	<script type="text/javascript" src="../Global_Navigations/global_navigations.js"></script>
-	<link rel="stylesheet" type="text/css" href="../Global_Navigations/header.css" />
-	<link rel="stylesheet" type="text/css" href="../Global_Navigations/footer.css" />
-	<script defer src="../JS/search.js"></script>
+	<link rel="stylesheet" type="text/css" href="../Global_Navigations/header.css"/>
+	<link rel="stylesheet" type="text/css" href="../Global_Navigations/footer.css"/>
 </head>
 <body>
 	<form>
@@ -39,7 +38,45 @@
 			</div>
     	</header>
 
-    	<a/>TEMPLATE BODY
+	<main class="profile-container">
+
+		<section class="profile-card">
+			<div class="profile-header">
+				<div class="avatar">
+					<i class="fas fa-user"></i>
+				</div>
+				<div>
+					<h2 id="username">John Doe</h2>
+					<p id="email">john.doe@email.com</p>
+				</div>
+			</div>
+
+			<div class="profile-actions">
+				<button onclick="editProfile()">Edit Profile</button>
+				<button class="secondary" onclick="logout()">Log Out</button>
+			</div>
+		</section>
+
+		<section class="info-card">
+			<h3>Account Information</h3>
+
+			<div class="info-row">
+				<span>Member since</span>
+				<span id="member-since">2024</span>
+			</div>
+
+			<div class="info-row">
+				<span>Orders placed</span>
+				<span id="order-count">12</span>
+			</div>
+
+			<div class="info-row">
+				<span>Saved items</span>
+				<span id="saved-count">5</span>
+			</div>
+		</section>
+
+	</main>
 
 		<footer class="footer">
 		    <div class="footer-container">

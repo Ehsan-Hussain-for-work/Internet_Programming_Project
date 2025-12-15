@@ -3,12 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login to an EAJ account</title>
+	<title>EAJ New Member</title>
 
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-	<script type="text/javascript" src="../JS/login.js"></script>
-	<link rel="stylesheet" type="text/css" href="../CSS/login.css"/>
+	
+	<script type="text/javascript" src="../JS/register.js"></script>
+	<link rel="stylesheet" type="text/css" href="../CSS/register.css"/>
 		
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	<script type="text/javascript" src="../Global_Navigations/global_navigations.js"></script>
@@ -39,33 +39,51 @@
 			    </nav>
 			</div>
     	</header>
+	</form>
 
-		<main class="profile-container">
+	<main class="profile-container">
 
-			<section class="profile-card login-card">
-				<h2 class="login-title">Sign In</h2>
+		<section class="profile-card login-card">
+			<h2 class="login-title">Create Account</h2>
 
-				<div class="login-field">
-					<label for="email">Email</label>
-					<input type="text" id="email" name="email"> <!-- eve.holt@reqres.in -->
-				</div>
+			<div class="login-field">
+				<label for="fname">First Name</label>
+				<input type="text" id="fname" name="fname">
+			</div>
 
-				<div class="login-field">
-					<label for="pass">Password</label>
-					<input type="password" id="pass" name="pass"> <!-- cityslicka -->
-				</div>
+			<div class="login-field">
+				<label for="lname">Last Name</label>
+				<input type="text" id="lname" name="lname">
+			</div>
 
-				<p id="message"></p>
+			<div class="login-field">
+				<label for="email">Email</label>
+				<input type="text" id="email" name="email">
+			</div>
 
-				<div class="profile-actions">
-					<button type="button" onclick="sendData()">Sign In</button>
-				</div>
-			</section>
+			<div class="login-field">
+				<label for="pass">Password</label>
+				<input type="password" id="pass" name="pass">
+			</div>
 
-				<a href="register.html" id="register">Create an Account</a>
-				<br><br>
-		</main>
+			<div class="login-field">
+				<label for="password2">Confirm Password</label>
+				<input type="password" id="password2" name="password2">
+			</div>
 
+			<p id="message"></p>
+
+			<div class="profile-actions">
+				<button type="button" onclick="sendData()">Create Account</button>
+			</div>
+		</section>
+
+    <a href="login.html" id="register">Already have an account?</a>
+	<br><br>
+
+	</main>
+
+	<form>
 		<footer class="footer">
 		    <div class="footer-container">
 		        <div class="footer-section footer-left">

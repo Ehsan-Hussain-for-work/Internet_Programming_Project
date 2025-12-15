@@ -70,12 +70,16 @@ function handleRegisterResponse(status, data) {
     registerInProgress = false;
 
     if (status === 200 && data.token) {
-        window.location.href = "login.html"; //will only accept email: "..." and Pass: "..."
-    } else {
-        showMessage("The email provided already belongs to an account", "red");
+        // SUCCESS: Redirect to login page
+        window.location.href = "login.html";
+    }
+    else if (status === 400 && data.error) {
+        showMessage(data.error, "red");
+    }
+    else {
+        showMessage("Registration failed due to an unexpected server issue.", "red");
     }
 }
-
 //UI Message
 function showMessage(text, color) {
     $("#message").text(text).css("color", color);

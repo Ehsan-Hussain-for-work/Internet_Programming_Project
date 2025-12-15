@@ -1,6 +1,20 @@
 /* === SEARCH PARAM === */
 const params = new URLSearchParams(window.location.search);
 const searchQuery = params.get("search");
+const category = params.get("category");
+
+const CATEGORY_FILES = {
+    Automotive: "../data/Automotive.json",
+    Electronics: "../data/Electronics.json",
+    Clothing: "../data/Clothing.json",
+    "Beauty & Personal Care": "../data/Beauty & Personal Care.json",
+    "Home & Kitchen": "../data/Home & Kitchen.json",
+    "Garden & Outdoors": "../data/Garden & Outdoors.json",
+    "Office Supplies": "../data/Office Supplies.json",
+    "Pet Supplies": "../data/Pet Supplies.json",
+    "Sports & Outdoors": "../data/Sports & Outdoors.json",
+    "Toys & Games": "../data/Toys & Games.json"
+};
 
 /* === DATA === */
 let allProducts = [];
@@ -16,22 +30,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* === LOAD PRODUCTS === */
 function loadProducts() {
-    fetch("../data/Automotive.json")
+    if (!category) {
+        console.error("No category provided");
+        return;
+    }
+
+    const filePath = CATEGORY_FILES[
+        Object.keys(CATEGORY_FILES).find(key => key.toLowerCase() === category.toLowerCase())
+    ];
+
+    if (!filePath) {
+        console.error("Category not mapped:", category);
+        return;
+    }
+
+    fetch(filePath)
         .then(res => res.json())
         .then(data => {
             allProducts = data;
 
-            /* SEARCH FILTER */
-            if (searchQuery) {
-                filteredProducts = data.filter(p =>
-                    p.title.toLowerCase().includes(searchQuery.toLowerCase())
-                );
-            } else {
-                filteredProducts = data;
-            }
+            filteredProducts = searchQuery
+                ? data.filter(p =>
+                    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+                  )
+                : data;
 
             renderProducts(filteredProducts);
-        });
+        })
+        .catch(err => console.error("Load failed:", err));
 }
 
 /* === RENDER PRODUCTS === */
@@ -45,7 +71,7 @@ function renderProducts(products) {
     }
 
     products.forEach(p => {
-        let title = p.title;
+        let title = p.name;
 
         /* HIGHLIGHT SEARCH KEYWORD */
         if (searchQuery) {
@@ -54,21 +80,18 @@ function renderProducts(products) {
         }
 
         container.innerHTML += `
-      <div class="product-card"
-           tabindex="0"
-           role="button"
-           aria-label="View product ${p.title}"
-           onclick="goToDetail('${p.id}')"
-           onkeydown="if(event.key==='Enter'){goToDetail('${p.id}')}"
-      >
-        <img src="${p.image}" alt="${p.title}">
-        <h3>${title}</h3>
-        <p>$${p.price}</p>
-      </div>
-    `;
+        <div class="product-card" onclick="goToDetail('${p.id}')">
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <h4>${p.description}</h4>
+            <p>$${p.price}</p>
+            <p>Remaining Stock: ${p.stock}</p>
+            <button onclick="addToCart(${p.id}, '${p.name}', ${p.price}, ${p.stock}, '${p.image}','${p.description}')">
+                Add to Cart
+            </button>
+        `;
     });
 }
-
 
 /* === SORT === */
 function sortProducts() {
@@ -90,7 +113,7 @@ function filterByPrice(e) {
 
     filteredProducts = allProducts.filter(p => {
         const matchesSearch = searchQuery
-            ? p.title.toLowerCase().includes(searchQuery.toLowerCase())
+            ? p.name.toLowerCase().includes(searchQuery.toLowerCase())
             : true;
 
         return p.price <= maxPrice && matchesSearch;
@@ -101,5 +124,5 @@ function filterByPrice(e) {
 
 /* === NAVIGATION === */
 function goToDetail(id) {
-    window.location.href = `product_detail.html?id=${id}`;
+    window.location.href = `product_detail.html?id=${id}&category=${encodeURIComponent(category)}`;
 }

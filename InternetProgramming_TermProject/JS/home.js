@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadFeaturedProducts();
 });
 
-//Categories
+/* Categories */
 function loadCategories() {
   fetch("../data/categories.xml")
     .then(res => res.text())
@@ -24,7 +24,7 @@ function loadCategories() {
     });
 }
 
-//Featured Products
+/* Featured Products */
 function loadFeaturedProducts() {
   fetch("../data/Automotive.json")
     .then(res => res.json())

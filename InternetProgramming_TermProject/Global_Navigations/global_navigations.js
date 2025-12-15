@@ -38,8 +38,8 @@ function buildHeaderNav(categories) {
         const li = document.createElement("li");
         const a = document.createElement("a");
 
-        a.href = "#";
         a.textContent = name;
+        a.href = `product_listing.html?category=${encodeURIComponent(name)}`;
 
         li.appendChild(a);
         ul.appendChild(li);
@@ -61,8 +61,8 @@ function buildFooterCatalog(categories) {
         if (!name) continue;
 
         const link = document.createElement("a");
-        link.href = "#";
         link.textContent = name;
+        link.href = `product_listing.html?category=${encodeURIComponent(name)}`;
 
         container.appendChild(link);
     }
@@ -76,61 +76,6 @@ function NavigateAccount() {
         return window.location.href = "login.html";
     } else {
         return window.location.href = "profile.html";
-    }
-}
-
-//Header Navigation
-function buildHeaderNav(categories) {
-    const subsection = document.querySelector("header > .subsection");
-    if (!subsection) {
-        return;
-    }
-
-    subsection.innerHTML = "";
-
-    const nav = document.createElement("nav");
-    const ul = document.createElement("ul");
-
-    for (let cat of categories) {
-        const name = cat.getElementsByTagName("name")[0]?.textContent;
-        if (!name) {
-            continue;
-        }
-
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-
-        a.href = "#";
-        a.textContent = name;
-
-        li.appendChild(a);
-        ul.appendChild(li);
-    }
-
-    nav.appendChild(ul);
-    subsection.appendChild(nav);
-}
-
-//Footer Catalog
-function buildFooterCatalog(categories) {
-    const container = document.querySelector("footer .catalog-list");
-    if (!container) {
-        return;
-    }
-
-    container.innerHTML = "";
-
-    for (let cat of categories) {
-        const name = cat.getElementsByTagName("name")[0]?.textContent;
-        if (!name) {
-            continue;
-        }
-
-        const link = document.createElement("a");
-        link.href = "#";
-        link.textContent = name;
-
-        container.appendChild(link);
     }
 }
 
@@ -212,15 +157,7 @@ function addToCart(id, name, price, stock, image, description) {
             return;
         }
     } else {
-        cart.push({
-            id,
-            name,
-            description,
-            price,
-            stock,
-            image,
-            quantity: 1
-        });
+        cart.push({id,name,description,price,stock,image,quantity: 1});
     }
 
     saveCart(cart);

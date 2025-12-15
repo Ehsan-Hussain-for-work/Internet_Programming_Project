@@ -19,12 +19,12 @@ searchInput.addEventListener("input", () => {
     if (query.length === 0) return;
 
     const matches = searchProducts
-        .filter(p => p.title.toLowerCase().includes(query))
+        .filter(p => p.name.toLowerCase().includes(query))
         .slice(0, 5);
 
     matches.forEach(p => {
         const item = document.createElement("div");
-        item.textContent = p.title;
+        item.textContent = p.name;
         item.onclick = () => {
             window.location.href = `product_listing.html?search=${encodeURIComponent(query)}`;
         };
